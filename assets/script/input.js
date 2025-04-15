@@ -1,26 +1,22 @@
 const buttons = document.querySelectorAll(".chevron");
 const slides = document.querySelectorAll(".slide");
+let index = 0;
 
-buttons.forEach((button) => {
-    button.addEventListener("click", (e) => {
-        const calcNextSlide = e.target.id === "next" ? 1 : -1 ;
-        const slideActive = document.querySelector(".active");
+function changeSlide(direction) {
+    slides[index].classList.remove("active");
 
-        newIndex = calcNextSlide + [...slides].indexOf(slideActive);
+    index += direction;
+    if (index < 0) index = slides.length - 1;
+    if (index >= slides.length) index = 0;
 
-        if (newIndex < 0) newIndex = [...slides].length - 1;
-        if (newIndex >= [...slides].length) newIndex = 0;
-        slides[newIndex].classList.add("active");
-
-        slideActive.classList.remove("active");
-    });
-});
-
-/* setInterval(() => changeSlide(1), 2000);
+    slides[index].classList.add("active");
+}
 
 buttons.forEach((button) => {
     button.addEventListener("click", (e) => {
         const direction = e.target.id === "next" ? 1 : -1;
         changeSlide(direction);
     });
-}); */
+});
+
+setInterval(() => changeSlide(1), 3000);
