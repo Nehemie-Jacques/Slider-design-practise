@@ -37,6 +37,13 @@
     cursor: pointer;
     transform: translateY(-50%);
     top: 50%;
+    transition: 0.5s ease;
+}
+
+.chevron:hover {
+    transform: translateY(-30%);
+    height: auto;
+    width: 1.7rem;
 }
 
 #prev {
